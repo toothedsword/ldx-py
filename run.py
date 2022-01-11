@@ -12,5 +12,5 @@ if True:  # {{{
         ctime = htt.str2time(stime)
         outdir = '/run/media/ldx/My Passport/newJC/selec-era5/'+htt.time2str(ctime, 'yyyy')+'/'
 
-        os.system('cp '+infile+' '+outdir)
+        os.system('cp '+infile+' "'+outdir+'"')
 # }}}
