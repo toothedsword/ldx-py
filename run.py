@@ -60,6 +60,8 @@ if True:  # {{{
 
                 if not(os.path.exists(infile)):
                     continue
+                else:
+                    print(infile)
 
                 dataset = nc.Dataset(infile, 'r')
                 i += 1
