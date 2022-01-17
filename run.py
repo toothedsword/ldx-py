@@ -2,7 +2,7 @@ import glob
 import re
 import time_htht as htt
 import os
-import h5py as h5
+# import h5py as h5
 import netCDF4 as nc
 import numpy as np
 
@@ -61,7 +61,7 @@ if True:  # {{{
                 if not(os.path.exists(infile)):
                     continue
 
-                dataset = nc.Dataset(fn, 'r')
+                dataset = nc.Dataset(infile, 'r')
                 i += 1
                 t = np.array(dataset['t'])
                 u = np.array(dataset['u'])
