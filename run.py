@@ -57,20 +57,20 @@ if True:  # {{{
                 ctime = htt.vec2time(year, 1, doy, hour, 0, 0)
                 infile = indir+htt.time2str(ctime, 'yyyy_mm_dd_HHMM') +\
                     '_2.125x0.125.ldx.nc'
+
                 if not(os.path.exists(infile)):
                     continue
-                f = h5.File(infile, 'r')
+
+                dataset = nc.Dataset(fn, 'r')
                 i += 1
-                t = f['t'][:]
-                u = f['u'][:]
-                v = f['v'][:]
+                t = np.array(dataset['t'])
+                u = np.array(dataset['u'])
+                v = np.array(dataset['v'])
 
                 if i < 2:
-                    lon = f['longitude'][:]
-                    lat = f['latitude'][:]
-                    lev = f['level'][:]
-
-                f.close()
+                    lon = np.array(dataset['longitude'])
+                    lat = np.array(dataset['latitude'])
+                    lev = np.array(dataset['level'])
 
                 spd = np.sqrt(u**2+v**2)
 
