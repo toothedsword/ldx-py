@@ -3,7 +3,7 @@ import re
 import time_htht as htt
 import os
 import h5py as h5
-# import netCDF4 as nc
+import netCDF4 as nc
 import numpy as np
 
 
@@ -51,15 +51,25 @@ if True:  # {{{
         spdy = 0
         uy = 0
         vy = 0
+        i = 0
         for doy in range(1, 366):
             for hour in [0, 6, 12, 18]:
                 ctime = htt.vec2time(year, 1, doy, hour, 0, 0)
                 infile = indir+htt.time2str(ctime, 'yyyy_mm_dd_HHMM') +\
                     '_2.125x0.125.ldx.nc'
+                if not(os.path.exists(infile)):
+                    continue
                 f = h5.File(infile, 'r')
+                i += 1
                 t = f['t'][:]
                 u = f['u'][:]
                 v = f['v'][:]
+
+                if i < 2:
+                    lon = f['longitude'][:]
+                    lat = f['latitude'][:]
+                    lev = f['level'][:]
+
                 f.close()
 
                 spd = np.sqrt(u**2+v**2)
@@ -68,6 +78,16 @@ if True:  # {{{
                 uy += u
                 vy += v
                 spdy += spd
-        
+
+        # save nc
+        ncfile = nc.Dataset('outfile'+str(year)+'.nc',
+                            "w", format="NETCDF4")
+        ncfile.createDimension('lev', len(lev))
+        ncfile.createDimension('lat', len(lat))
+        ncfile.createDimension('lon', len(lon))
+
+        ncfile.createVariable('ty', 'f32', ('lev', 'lat', 'lon'))
+        ncfile.variables['ty'][:] = ty
+
 
 # }}}
