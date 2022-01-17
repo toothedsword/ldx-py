@@ -17,7 +17,7 @@ if False:  # {{{
         os.system('cp '+infile+' "'+outdir+'"')
 # }}}
 
-# set the soft links for the new data
+# change the name
 if True:  # {{{
     for year in range(2015, 2020):
         indir = '/home/ldx/mp/newJC/selec-era5/'+str(year)+'/'
@@ -36,5 +36,6 @@ if True:  # {{{
                 outfile = indir+htt.time2str(ctime, 'yyyy_mm_dd_HHMM') +\
                     '_2.125x0.125.ldx.nc'
                 cmd = 'mv '+infile+' '+outfile
+
                 print(cmd)
 # }}}
