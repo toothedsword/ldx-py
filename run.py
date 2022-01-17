@@ -95,14 +95,14 @@ if True:  # {{{
         ncfile.createDimension('lat', len(lat))
         ncfile.createDimension('lon', len(lon))
 
-        ncfile.createVariable('ty', 'f32', ('lev', 'lat', 'lon'))
-        ncfile.variables['ty'][:] = ty
-        ncfile.createVariable('uy', 'f32', ('lev', 'lat', 'lon'))
-        ncfile.variables['uy'][:] = uy
-        ncfile.createVariable('vy', 'f32', ('lev', 'lat', 'lon'))
-        ncfile.variables['vy'][:] = vy
-        ncfile.createVariable('spdy', 'f32', ('lev', 'lat', 'lon'))
-        ncfile.variables['spdy'][:] = spdy
+        ncfile.createVariable('ty', 'f8', ('lev', 'lat', 'lon'))
+        ncfile.variables['ty'][:] = ty/i
+        ncfile.createVariable('uy', 'f8', ('lev', 'lat', 'lon'))
+        ncfile.variables['uy'][:] = uy/i
+        ncfile.createVariable('vy', 'f8', ('lev', 'lat', 'lon'))
+        ncfile.variables['vy'][:] = vy/i
+        ncfile.createVariable('spdy', 'f8', ('lev', 'lat', 'lon'))
+        ncfile.variables['spdy'][:] = spdy/i
         exit()
 
 
