@@ -59,7 +59,11 @@ if True:  # {{{
                                    htt.time2str(ctime, 'yyyy_mm_dd_HHMM') +
                                    '_?.125x0.125.ldx.nc')
 
-                infile = infile[0]
+                try:
+                    infile = infile[0]
+                except Exception as e:
+                    print(e)
+                    continue
 
                 if not(os.path.exists(infile)):
                     continue
