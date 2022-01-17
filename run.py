@@ -111,6 +111,13 @@ if False:  # {{{
 
 # plot the yearly figures
 if True:  # {{{
+
+    infile = '2015_06_01_0000_0.125x0.125.ldx.nc'
+    dataset = nc.Dataset(infile, 'r')
+    lon = np.array(dataset['longitude'])
+    lat = np.array(dataset['latitude'])
+    lev = np.array(dataset['level'])
+
     for year in range(2015, 2020):
         infile = 'outfile'+str(year)+'.nc'
         dataset = nc.Dataset(infile, 'r')
