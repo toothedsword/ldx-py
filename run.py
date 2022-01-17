@@ -123,10 +123,17 @@ if True:  # {{{
         u = spd*u/spduv
         v = spd*v/spduv
 
-        plt.imshow(ti, extent=[lonlim[0], lonlim[1], latlim[0], latlim[1]])
-        plt.
-
+        lonlim = [np.min(lon), np.max(lon)]
+        latlim = [np.min(lat), np.max(lat)]
         breakpoint()
+
+        idp = lev == 925
+        ti = t[:, :, idp]
+        ui = u[:, :, idp]
+        vi = v[:, :, idp]
+        plt.imshow(ti, extent=[lonlim[0], lonlim[1], latlim[0], latlim[1]])
+        plt.quiver(lon, lat, ui, vi)
+
 
 # }}}
 
