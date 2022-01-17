@@ -112,7 +112,7 @@ if False:  # {{{
 # plot the yearly figures
 if True:  # {{{
     for year in range(2015, 2020):
-        ncfile = 'outfile'+str(year)+'.nc'
+        infile = 'outfile'+str(year)+'.nc'
         dataset = nc.Dataset(infile, 'r')
         t = np.array(dataset['ty'])
         u = np.array(dataset['uy'])
