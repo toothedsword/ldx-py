@@ -45,7 +45,7 @@ if False:  # {{{
 
 # calculate the yearly mean
 if True:  # {{{
-    for year in range(2015, 2020):
+    for year in range(2016, 2020):
         indir = '/home/ldx/mp/newJC/selec-era5/'+str(year)+'/'
         ty = 0
         spdy = 0
@@ -89,6 +89,8 @@ if True:  # {{{
                 spdy += spd
 
         # save nc
+        if i <= 1:
+            continue
         ncfile = nc.Dataset('outfile'+str(year)+'.nc',
                             "w", format="NETCDF4")
         ncfile.createDimension('lev', len(lev))
@@ -103,7 +105,20 @@ if True:  # {{{
         ncfile.variables['vy'][:] = vy/i
         ncfile.createVariable('spdy', 'f8', ('lev', 'lat', 'lon'))
         ncfile.variables['spdy'][:] = spdy/i
-        exit()
 
+# }}}
 
+# plot the yearly figures
+if False:  # {{{
+    for year in range(2015, 2020):
+        ncfile = 'outfile'+str(year)+'.nc'
+        dataset = nc.Dataset(infile, 'r')
+        t = np.array(dataset['ty'])
+        u = np.array(dataset['uy'])
+        v = np.array(dataset['vy'])
+        spd = np.array(dataset['spdy'])
+
+        spduv = np.sqrt(u**2+v**2)
+        u = spd*u/spduv
+        v = spd*v/spduv
 # }}}
