@@ -88,6 +88,13 @@ if True:  # {{{
 
         ncfile.createVariable('ty', 'f32', ('lev', 'lat', 'lon'))
         ncfile.variables['ty'][:] = ty
+        ncfile.createVariable('uy', 'f32', ('lev', 'lat', 'lon'))
+        ncfile.variables['uy'][:] = uy
+        ncfile.createVariable('vy', 'f32', ('lev', 'lat', 'lon'))
+        ncfile.variables['vy'][:] = vy
+        ncfile.createVariable('spdy', 'f32', ('lev', 'lat', 'lon'))
+        ncfile.variables['spdy'][:] = spdy
+        exit()
 
 
 # }}}
