@@ -5,6 +5,7 @@ import os
 # import h5py as h5
 import netCDF4 as nc
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 # move data to select era dir
@@ -44,7 +45,7 @@ if False:  # {{{
 # }}}
 
 # calculate the yearly mean
-if True:  # {{{
+if False:  # {{{
     for year in range(2016, 2020):
         indir = '/home/ldx/mp/newJC/selec-era5/'+str(year)+'/'
         ty = 0
@@ -109,7 +110,7 @@ if True:  # {{{
 # }}}
 
 # plot the yearly figures
-if False:  # {{{
+if True:  # {{{
     for year in range(2015, 2020):
         ncfile = 'outfile'+str(year)+'.nc'
         dataset = nc.Dataset(infile, 'r')
@@ -121,4 +122,12 @@ if False:  # {{{
         spduv = np.sqrt(u**2+v**2)
         u = spd*u/spduv
         v = spd*v/spduv
+
+        plt.imshow(ti, extent=[lonlim[0], lonlim[1], latlim[0], latlim[1]])
+        plt.
+
+        breakpoint()
+
 # }}}
+
+# end
