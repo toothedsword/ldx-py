@@ -28,7 +28,7 @@ if True:  # {{{
             stime00 = re.search(r'(\d{4}_\d\d_\d\d_\d\d\d\d)',
                                 infile00).group(1)
             stime00 = re.sub('_', '', stime00)
-            ctime00 = htt.str2time(stime00)
+            ctime00 = htt.str2time(stime00+'00')
             for hour in [6, 12, 18]:
                 ctime = ctime00 + hour*3600
                 infile = indir+htt.time2str(ctime, 'yyyymmddHH') +\
