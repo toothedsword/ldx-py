@@ -55,8 +55,11 @@ if True:  # {{{
         for doy in range(1, 366):
             for hour in [0, 6, 12, 18]:
                 ctime = htt.vec2time(year, 1, doy, hour, 0, 0)
-                infile = indir+htt.time2str(ctime, 'yyyy_mm_dd_HHMM') +\
-                    '_2.125x0.125.ldx.nc'
+                infile = glob.glob(indir +
+                                   htt.time2str(ctime, 'yyyy_mm_dd_HHMM') +
+                                   '_?.125x0.125.ldx.nc')
+
+                infile = infile[0]
 
                 if not(os.path.exists(infile)):
                     continue
