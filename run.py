@@ -36,6 +36,6 @@ if True:  # {{{
                 outfile = indir+htt.time2str(ctime, 'yyyy_mm_dd_HHMM') +\
                     '_2.125x0.125.ldx.nc'
                 cmd = 'mv '+infile+' '+outfile
-
                 print(cmd)
+                os.system(cmd)
 # }}}
