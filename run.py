@@ -132,16 +132,16 @@ if True:  # {{{
 
         lonlim = [np.min(lon), np.max(lon)]
         latlim = [np.min(lat), np.max(lat)]
-        breakpoint()
 
         idp = lev == 925
-        ti = t[:, :, idp]
-        ui = u[:, :, idp]
-        vi = v[:, :, idp]
-        plt.imshow(ti, extent=[lonlim[0], lonlim[1], latlim[0], latlim[1]])
-        plt.quiver(lon, lat, ui, vi)
-
-
+        ti = np.squeeze(t[idp, :, :])
+        ui = np.squeeze(u[idp, :, :])
+        vi = np.squeeze(v[idp, :, :])
+        fig = plt.figure()
+        ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])
+        ax.imshow(ti, extent=[lonlim[0], lonlim[1], latlim[0], latlim[1]])
+        ax.quiver(lon, lat, ui, vi)
+        fig.savefig(str(year)+'.png')
 # }}}
 
 # end
